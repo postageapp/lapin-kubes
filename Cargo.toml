@@ -8,7 +8,7 @@ edition = "2018"
 [dependencies]
 async-global-executor = "*"
 futures-lite = "*"
-lapin = "*"
+lapin = { git = "https://github.com/CleverCloud/lapin.git", branch = "master" }
 tracing = "*"
 tracing-subscriber = "*"
 

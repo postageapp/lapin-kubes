@@ -48,7 +48,7 @@ fn main() -> Result<()> {
         info!("will consume");
 
         while let Some(delivery) = consumer.next().await {
-            let (_channel, delivery) = delivery.expect("error in consumer");
+            let delivery = delivery.expect("error in consumer");
 
             match from_utf8(&delivery.data) {
                 Ok(str) => {
