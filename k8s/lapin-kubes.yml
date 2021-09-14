@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: lapin-kubes
+spec:
+  serviceName: lapin-kubes
+  selector:
+    matchLabels:
+      app: lapin-kubes
+  replicas: 1
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        app: lapin-kubes
+    spec:
+      imagePullSecrets:
+      - name: dockerhub-credentials
+      containers:
+      - name: lapin-kubes
+        image: postageapp/lapin-kubes:0.1.0
+        imagePullPolicy: Always
+        args:
+          - sleep
+          - "99999999"
+          # - /usr/local/bin/muton-server
+          # - -v
+        env:
+        - name: AMQP_ADDR
+          value: amqp://lapin:lapin@rmq:5672/%2f
+        resources:
+          requests:
+            memory: 512Mi
+            cpu: '1'
+          limits:
+            memory: 512Mi
+            cpu: '1'
