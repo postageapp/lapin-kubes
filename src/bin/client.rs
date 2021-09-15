@@ -1,3 +1,4 @@
+#[allow(unused_imports)]
 use futures_lite::stream::StreamExt;
 use lapin::{
     options::*, publisher_confirm::Confirmation, types::FieldTable, BasicProperties, Connection,
