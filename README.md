@@ -25,3 +25,8 @@ This does happen within Kubernetes to both Kubernetes-hosted RabbitMQ, and
 an external (non-Kubernetes) RabbitMQ server.
 
 > Tested using Kubernetes v1.22.1 on Docker 20.10.8 using Flannel as a CNI.
+
+See also:
+
+* [Issue #347 - Kubernetes](https://github.com/CleverCloud/lapin/issues/347)
+* [Issue #348 - Delivery stalls](https://github.com/CleverCloud/lapin/issues/348)
