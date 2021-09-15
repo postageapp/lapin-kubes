@@ -1,3 +1,6 @@
+use std::thread::sleep;
+use std::time::Duration;
+
 #[allow(unused_imports)]
 use futures_lite::stream::StreamExt;
 use lapin::{
@@ -58,6 +61,8 @@ fn main() -> Result<()> {
                 .await?;
 
             assert_eq!(confirm, Confirmation::NotRequested);
+
+            sleep(Duration::from_nanos(1000));
         }
 
         Ok(())

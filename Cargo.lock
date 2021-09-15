@@ -538,7 +538,6 @@ dependencies = [
 [[package]]
 name = "lapin"
 version = "2.0.0-alpha.4"
-source = "git+https://github.com/CleverCloud/lapin.git?branch=master#b2ce89ba6cc825f7a6458ce6eeb8221f99ffd6b9"
 dependencies = [
  "amq-protocol",
  "async-global-executor-trait",
