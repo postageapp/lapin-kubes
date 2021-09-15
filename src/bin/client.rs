@@ -10,6 +10,13 @@ fn main() -> Result<()> {
         std::env::set_var("RUST_LOG", "info");
     }
 
+    let count = if let Ok(env) = std::env::var("REPEAT") {
+        env.parse().unwrap()
+    }
+    else {
+        1
+    };
+
     tracing_subscriber::fmt::init();
 
     let addr = std::env::var("AMQP_ADDR").unwrap_or_else(|_| "amqp://127.0.0.1:5672/%2f".into());
@@ -35,20 +42,22 @@ fn main() -> Result<()> {
 
         info!(?queue, "Declared queue");
 
-        let payload = b"Hello world!".to_vec();
+        for _ in 0..count {
+            let payload = b"Hello world!".to_vec();
 
-        let confirm = channel
-            .basic_publish(
-                "",
-                "hello",
-                BasicPublishOptions::default(),
-                payload,
-                BasicProperties::default(),
-            )
-            .await?
-            .await?;
+            let confirm = channel
+                .basic_publish(
+                    "",
+                    "hello",
+                    BasicPublishOptions::default(),
+                    payload,
+                    BasicProperties::default(),
+                )
+                .await?
+                .await?;
 
-        assert_eq!(confirm, Confirmation::NotRequested);
+            assert_eq!(confirm, Confirmation::NotRequested);
+        }
 
         Ok(())
     })
