@@ -8,8 +8,7 @@ edition = "2018"
 [dependencies]
 async-global-executor = "*"
 futures-lite = "*"
-# lapin = { git = "https://github.com/CleverCloud/lapin.git", branch = "master" }
-lapin = { path = "../../git/lapin" }
+lapin = { git = "https://github.com/postageapp/lapin.git", branch = "fix/issue-348" }
 tracing = "*"
 tracing-subscriber = "*"
 

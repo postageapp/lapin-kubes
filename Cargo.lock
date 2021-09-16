@@ -538,6 +538,7 @@ dependencies = [
 [[package]]
 name = "lapin"
 version = "2.0.0-alpha.4"
+source = "git+https://github.com/postageapp/lapin.git?branch=fix/issue-348#b8be0fa3b933df97235cc4e8d90dec169add07aa"
 dependencies = [
  "amq-protocol",
  "async-global-executor-trait",
